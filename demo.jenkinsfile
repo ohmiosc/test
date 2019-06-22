@@ -63,6 +63,10 @@ pipeline {
           return params.DEPLOY ==~ /(?i)(Y|YES|T|TRUE|ON|RUN)/
         }
       }
+      sh "zip -r ${env.ARTIFACT} 4-fake-delegation/"
+      archiveArtifacts artifacts: "${env.ARTIFACT}", onlyIfSuccessful: true
+      sh "rm -rf ${env.ARTIFACT}"
+
       steps {
         sh "echo hare_deploy"
         build job: "mydemo", parameters: [
