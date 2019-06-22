@@ -51,8 +51,8 @@ pipeline {
     stage ('Build') {
       steps {
         script {
-          echo "def ID = sh(returnStdout: true, script: "./ami_id.sh ${env.BUILD_NUMBER}").trim()"
-          echo "sh "./build_ami.sh ${ID}""
+          echo ""
+          echo ""
         }
       }
     }
